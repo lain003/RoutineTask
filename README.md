@@ -14,5 +14,5 @@
 - reactのフォルダは```./react_app```以下にあります
 
 # 操作画面
-![Animation](https://github.com/lain003/RoutineTask/assets/1112171/ce0d7079-daa9-425d-a007-523f1c086b2b)
+![Animation](https://github.com/lain003/RoutineTask/assets/1112171/c378f07a-fd0e-4dec-af94-d565ab733085)
 
