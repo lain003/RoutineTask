@@ -1,0 +1,33 @@
+version: "3.7"
+services:
+  rails_app:
+    build:
+      context: .
+      dockerfile: ./docker/rails_app
+    ports:
+      - "3001:3001"
+    volumes:
+      - .:/myapp
+      - bundle-data:/usr/local/bundle/
+    command: >
+      bash -c "rm -f tmp/pids/server.pid &&
+      bundle exec rake db:migrate &&
+      bundle exec bundle install &&
+      bundle exec rails s -p 3001 -b '0.0.0.0'"
+    tty: true
+    stdin_open: true
+    container_name: rails_app
+  react_front:
+    build:
+      context: .
+      dockerfile: ./docker/react_front
+    volumes:
+      - ./react_app:/usr/src/app
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+    container_name: react_front
+    command: sh -c "npm install && npm start"
+volumes:
+  bundle-data:
